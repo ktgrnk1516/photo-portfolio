@@ -1,4 +1,4 @@
-.container {
+/* .container {
   padding: 0 2rem;
 }
 
@@ -112,5 +112,39 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+} */
+
+.body_root {
+  /* background: aqua; */
+  /* 中央よせ */
+  margin: 0 80px;
+}
+
+.body_wrapper {
+  /* background: #000; */
+  display: flex;
+
+  /* justify-content: space-evenly; */
+  /* padding: 10px 0; */
+  /* width: 99%; */
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 926px) {
+  .body_root {
+    /* background: aqua; */
+    /* 中央よせ */
+    margin: 0 0px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .body_root {
+    /* background: aqua; */
+    /* 中央よせ */
+    margin: 0 0px;
+  }
+  .body_wrapper {
   }
 }

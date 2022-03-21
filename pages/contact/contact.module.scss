@@ -1,0 +1,45 @@
+.root {
+  margin-top: 120px;
+  align-items: center;
+  text-align: center;
+}
+.root img {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 20px;
+
+  // align-items: center;
+  // text-align: center;
+}
+
+.body_root {
+  text-align: center;
+  align-items: center;
+  margin: 0 80px;
+}
+
+.img_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .root {
+    margin-top: 60px;
+  }
+
+  .body_root {
+    text-align: center;
+    align-items: center;
+    margin: 0 15px;
+  }
+  .root img {
+    // width: 500px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 30px;
+  }
+}
