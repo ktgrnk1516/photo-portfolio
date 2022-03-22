@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({isVisible}) => {
   const menues = [
     {
       name: "CONTACT",

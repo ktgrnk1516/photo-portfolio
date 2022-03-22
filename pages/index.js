@@ -5,7 +5,7 @@ import { Header, PostCard } from "../components";
 import { getPosts } from "../services";
 import { useEffect, useState } from "react";
 
-export default function Home({ posts }) {
+export default function Home({ isVisible, posts }) {
   //ローカルのpostデータ=>graphCMSから持ってくるからコメントアウト
   // const posts = [
   //   {
@@ -16,17 +16,29 @@ export default function Home({ posts }) {
   //   },
   // ];
 
-  //スクロールによって背景色を変える
-  const [isVisible, setIsVisible] = useState(false);
+  // //スクロールによって背景色を変える
+  // const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
-    window.scrollY > 100 ? setIsVisible(true) : setIsVisible(false);
+  // const toggleVisibility = () => {
+  //   window.scrollY > 100 ? setIsVisible(true) : setIsVisible(false);
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", toggleVisibility);
+  //   return () => window.removeEventListener("scroll", toggleVisibility);
+  // }, []);
+
+  //postsをmapする？
+  const getParseTime = () => {
+    const time = posts.map((post) => {
+      return post.node.time; //整形したい
+    });
+    const ts = Date.parse(time.map(t=>{
+      return t 
+    })) //foreEarch？
+    console.log(ts); //timeは配列
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+  getParseTime();
 
   return (
     <div className={isVisible ? styles.black_visible : styles.white_visible}>

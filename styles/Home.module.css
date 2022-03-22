@@ -116,10 +116,13 @@
 } */
 
 .black_visible {
+  height: 300vh;
   transition: 1s all ease;
   background: #000;
 }
 .white_visible {
+  height: 300vh;
+
   transition: 1s all ease;
   background: #fff;
 }

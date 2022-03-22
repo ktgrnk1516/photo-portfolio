@@ -1,10 +1,10 @@
 import React from "react";
 import { Header } from "./";
 
-const Layout = ({children}) => {
+const Layout = ({isVisible,children}) => {
   return (
     <>
-      <Header />
+      <Header isVisible={isVisible}/>
       {children}
     </>
   );
