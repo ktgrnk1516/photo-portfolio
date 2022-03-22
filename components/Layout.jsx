@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "./";
+import styles from "./Layout.module.scss";
 
-const Layout = ({isVisible,children}) => {
+const Layout = ({ isVisible, children }) => {
   return (
-    <>
-      <Header isVisible={isVisible}/>
+    <div className={isVisible ? styles.black_visible : styles.white_visible}>
+      <Header />
       {children}
-    </>
+    </div>
   );
 };
 

@@ -115,7 +115,7 @@
   }
 } */
 
-.black_visible {
+/* .black_visible {
   height: 300vh;
   transition: 1s all ease;
   background: #000;
@@ -125,7 +125,7 @@
 
   transition: 1s all ease;
   background: #fff;
-}
+} */
 
 .body_root {
   /* background: aqua; */
