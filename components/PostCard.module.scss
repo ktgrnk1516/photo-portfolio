@@ -33,7 +33,7 @@
     color: #fff;
     align-items: center;
     text-align: center;
-    padding-top: 25px;
+    padding-top: 65px;
 
     display: flex;
     flex-direction: column;
@@ -53,9 +53,14 @@
 
   figure.hover_parent:hover .hover_mask {
     opacity: 1;
-    transition: all 0.9s ease;
+    transition: all 0.8s ease;
     // padding-bottom: 0;
-    padding-top: 82px;
+    padding-top: 91px;
+  }
+  figure.hover_parent:hover .hover_mask div {
+    //下線ライン
+    border-bottom: solid 1px #ffffff;
+    transition: 0.3s;
   }
 }
 @media screen and (max-width: 926px) {
@@ -95,12 +100,13 @@
     figcaption.hover_mask {
       width: 100%;
       height: 100%;
+      padding-top: 45px;
     }
     figure.hover_parent:hover .hover_mask {
       opacity: 1;
-      transition: all 0.9s ease;
+      transition: all 0.7s ease;
       // padding-bottom: 0;
-      padding-top: 60px;
+      padding-top: 72.5px;
     }
   }
 }

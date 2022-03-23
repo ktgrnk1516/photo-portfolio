@@ -5,13 +5,11 @@ import React, { useState, useEffect } from "react";
 import { Layout } from "../components";
 
 function MyApp({ Component, pageProps }) {
-
-
   //スクロールによって背景色を変える
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    window.scrollY > 200 ? setIsVisible(true) : setIsVisible(false);
+    window.scrollY > 300 ? setIsVisible(true) : setIsVisible(false);
   };
 
   useEffect(() => {
@@ -19,11 +17,9 @@ function MyApp({ Component, pageProps }) {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-
-
   return (
     <Layout isVisible={isVisible}>
-      <Component {...pageProps} isVisible={isVisible}/>
+      <Component {...pageProps} isVisible={isVisible} />
     </Layout>
   );
 }

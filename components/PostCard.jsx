@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./PostCard.module.scss";
 
 const PostCard = ({ post }) => {
-  console.log(post);
+  // console.log(post);
   return (
     <div className={classes.root}>
       <figure className={classes.hover_parent}>
@@ -26,9 +26,9 @@ const PostCard = ({ post }) => {
         /> */}
         　
         <figcaption className={classes.hover_mask}>
-          <div>{post.time}</div>
-          <div>{post.desc}</div>
-          <div>{post.place.distance}</div>
+          <div >{post.time}</div>
+          {/* <div>{post.desc}</div> */}
+          {/* <div>{post.place.distance}</div> */}
         </figcaption>
       </figure>
     </div>
