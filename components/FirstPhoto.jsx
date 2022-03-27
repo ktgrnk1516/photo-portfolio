@@ -18,21 +18,11 @@ const FirstPhoto = ({ posts }) => {
     (post) => post.node.time.toLocaleString().substr(0, 4) === threemojitime
   );
 
-  const post = posts[9].node;
+  const post = posts[11].node;
 
   if (filterPosts.length === 0) {
     return (
-      <div
-        style={{
-          display: "flex",
-          width: "40%",
-          height: "30%",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-        // margin: "20px",>
-      >
+      <div className={styles.img_root}>
         <img
           src={post.image.url}
           alt=""
@@ -52,17 +42,7 @@ const FirstPhoto = ({ posts }) => {
   } else {
     const filterPost = filterPosts[0].node;
     return (
-      <div
-        style={{
-          display: "flex",
-          width: "40%",
-          height: "30%",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-        // margin: "20px",>
-      >
+      <div className={styles.img_root}>
         <img
           src={filterPost.image.url}
           alt=""
