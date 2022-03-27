@@ -1,8 +1,26 @@
-.c {
-  height: 80vh;
+// .root {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
 
-  // width: 60%;
+// }
+
+.root {
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.c {
+  height: 60vh;
+  width: 100vw;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  // margin: 0 80px;
 }
 
 // .c-bg {
@@ -33,20 +51,20 @@
 
 .toiawase {
   // margin-top: 15px;
-  margin: 80px 300px;
+  // margin: 80px 300px;
 }
 
 .c-title {
   font-size: 60px;
-  width: 80%;
+  width: 100%;
 }
 
 .c-info-item {
   display: flex;
   align-items: center;
-  margin: 50px 0px;
+  margin: 30px 0px;
   font-weight: 300;
-  width: 70%;
+  width: 100%;
 }
 
 .c-info-item i {
@@ -63,9 +81,15 @@
 }
 
 @media screen and (max-width: 480px) {
+  .c {
+    height: 50vh;
+    
+  }
+  
+  
   .c-wrapper {
     flex-direction: column;
-    padding: 0px 50px;
+    padding: 0px 20px;
   }
 
   .c-title {

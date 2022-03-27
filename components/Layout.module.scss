@@ -1,13 +1,64 @@
+
+
 .black_visible {
-  height: 700vh;
+  height: 600vh;
   background: #000;
   color: #fff;
   transition: 0.7s all ease;
 }
 .white_visible {
-  height: 700vh;
+  height: 600vh;
 
   background: #fff;
   color: #000;
   transition: 0.7s all ease;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.left_or_right {
+  display: flex;
+  // justify-content: center;
+
+  .left {
+    position: fixed; //★★★★★★★★★
+    font-size: 7px;
+    width: 120px;
+    text-align: center;
+    align-items: center;
+    // background: grey;
+    margin-left: 12px;
+    padding-right: 18px;
+
+    //下から上に表示させるために最初非表示
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  //.showが追加されたら、正常な状態に戻す
+  .show {
+    opacity: 1;
+    transform: none;
+  }
+
+  .left li {
+    cursor: pointer;
+    opacity: 0.4;
+    position: sticky;
+    margin: 10px 0px;
+  }
+
+  .left :hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .left {
+    display: none;
+  }
 }

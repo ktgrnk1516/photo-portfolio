@@ -1,0 +1,17 @@
+.root {
+  .ampm {
+    opacity: 0;
+  }
+  .daynight {
+    opacity: 0;
+  }
+
+  .opa:hover {
+    .ampm {
+      opacity: 0.9;
+    }
+    .daynight {
+      opacity: 0.9;
+    }
+  }
+}

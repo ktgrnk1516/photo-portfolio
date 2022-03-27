@@ -1,22 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import classes from "./PostCard.module.scss";
+// import { useScroll } from "../hooks";
 
 const PostCard = ({ post }) => {
-  // console.log(post);
   return (
     <div className={classes.root}>
       <figure className={classes.hover_parent}>
-        <img
-          src={post.image.url}
-          alt=""
-          // style={{
-          //   objectFit: "cover",
-          //   width: "172.5px",
-          //   height: "172.5px",
-          //   // display: "flex",
-          // }}
-        />
+        <img src={post.image.url} alt="" />
         {/* <Image
           src={post.image}
           alt=""
@@ -26,7 +17,8 @@ const PostCard = ({ post }) => {
         /> */}
         　
         <figcaption className={classes.hover_mask}>
-          <div >{post.time}</div>
+          {/* <div>{idx}</div> */}
+          <div>{post.time}</div>
           {/* <div>{post.desc}</div> */}
           {/* <div>{post.place.distance}</div> */}
         </figcaption>
