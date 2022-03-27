@@ -4,7 +4,7 @@ import styles from "./FirstPhoto.module.scss";
 const FirstPhoto = ({ posts }) => {
   //FirstPhotoを現在時刻によって切り替える
   //現在時刻の取得
-  let time = new Date().getHours();
+  let time = new Date().getHours().toLocaleString({ timeZone: 'Asia/Tokyo' });
   // console.log(time);
   if (time > 12) {
     time = "PM " + (time - 12);
