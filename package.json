@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
+    "full-icu": "^1.4.0",
     "graphql": "^16.3.0",
     "graphql-request": "^4.1.0",
     "html-react-parser": "^1.4.9",
