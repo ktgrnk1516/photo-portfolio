@@ -6,7 +6,7 @@ import { getPosts } from "../services";
 import { useEffect } from "react";
 import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick,isVisible }) {
+export default function Home({ posts, timeClick, isVisible }) {
   //ローカルのpostデータ=>graphCMSから持ってくるからコメントアウト
   // const posts = [
   //   {
@@ -129,8 +129,8 @@ export async function getStaticProps() {
     //https://qiita.com/Naoki_kkc/items/2a29287834c453d23ecf
     //JavaScriptで時刻の二桁目をゼロ埋めするQiita
     //.toString().padStart(2, '0')!!!!!!
-    const hh = b.getHours().toString().padStart(2, "0");
-    const mm = b.getMinutes().toString().padStart(2, "0");
+    const hh = b.getHours().toString().toLocaleString("ja-JP").padStart(2, "0");
+    const mm = b.getMinutes().toString().toLocaleString("ja-JP").padStart(2, "0");
     const saisyutimes = `${hh}:${mm}`;
 
     return saisyutimes; //mapでreturn!!!
