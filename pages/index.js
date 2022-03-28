@@ -17,65 +17,8 @@ export default function Home({ posts, timeClick, isVisible }) {
   //   },
   // ];
 
-  useEffect(() => {
-    // //配列postsをソート/オブジェクトの昇順ソート
-    // //https://keizokuma.com/js-array-object-sort/
-    // //post.node.timeを時間のみの形にしたい（mapで？）
-    // let posttimes1 = posts.map((post) => {
-    //   return post.node.time; //整形したい
-    // });
-    // //mapでUTC時間をAM/PMの形に整形
-    // const sorttimes = posttimes1.map((time) => {
-    //   const a = Date.parse(time);
-    //   const b = new Date(a);
-    //   //https://qiita.com/Naoki_kkc/items/2a29287834c453d23ecf
-    //   //JavaScriptで時刻の二桁目をゼロ埋めするQiita
-    //   //.toString().padStart(2, '0')!!!!!!
-    //   const hh = b.getHours().toString().padStart(2, "0");
-    //   const mm = b.getMinutes().toString().padStart(2, "0");
-    //   const saisyutimes = `${hh}:${mm}`;
-    //   return saisyutimes; //mapでreturn!!!
-    // });
-    // // sorttimes.sort(function (a, b) {
-    // //   return a > b ? 1 : -1;
-    // // });
-    // // console.log(sorttimes);
-    // //配列を書き換え
-    // posts.map((post, index) => {
-    //   post.node.time = sorttimes[index];
-    // });
-    // // console.log([posts]);
-    // //配列posts：オブジェクトの時間の昇順ソート
-    // let result = posts.sort(function (a, b) {
-    //   return a.node.time < b.node.time ? -1 : 1;
-    // });
-    // // console.log([result]);
-    // //-----------------------------------//
-    // //AM/PMの形に整形
-    // let times = result.map((post) => {
-    //   return post.node.time; //整形したい
-    // });
-    // //mapでUTC時間をAM/PMの形に整形
-    // const posttimes2 = times.map((time) => {
-    //   // console.log(time.substr(0, 2));
-    //   const HH = time.substr(0, 2);
-    //   const MM = time.substr(3, 2);
-    //   const saisyutimes =
-    //     HH < 12 ? `AM ${parseInt(HH)}:${MM}` : `PM ${HH - 12}:${MM}`;
-    //   return saisyutimes; //mapでreturn!!!
-    // });
-    // // console.log(posttimes2);
-    // posts.map((post, index) => {
-    //   post.node.time = posttimes2[index];
-    // });
-    // //配列postsにidというkeyを新しく追加する "AM 8"とか
-    // posts.forEach((e) => {
-    //   e.idx = e.node.time.substr(0, 4);
-    // });
-    // console.log([posts]);
-  }, [posts]);
-
-  //ref!!!!!!!!!
+  
+  //ref
   //timeClickの状態は、_app.js=>index.js(Home)=>postCard.jsxの順で渡している
   // console.log(timeClick);
   //refの定義！（カスタムhooksで外から持ってきている）
@@ -123,14 +66,23 @@ export async function getStaticProps() {
   });
   //mapでUTC時間をAM/PMの形に整形
   const sorttimes = posttimes1.map((time) => {
+    
     const a = Date.parse(time);
-    const b = new Date(a);
+    // const b = new Date(a);
+
+    //LINE APIの動画みててたまたまみつけた
+    const b = new Date(a+ ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
+  
 
     //https://qiita.com/Naoki_kkc/items/2a29287834c453d23ecf
     //JavaScriptで時刻の二桁目をゼロ埋めするQiita
     //.toString().padStart(2, '0')!!!!!!
     const hh = b.getHours().toString().toLocaleString("ja-JP").padStart(2, "0");
-    const mm = b.getMinutes().toString().toLocaleString("ja-JP").padStart(2, "0");
+    const mm = b
+      .getMinutes()
+      .toString()
+      .toLocaleString("ja-JP")
+      .padStart(2, "0");
     const saisyutimes = `${hh}:${mm}`;
 
     return saisyutimes; //mapでreturn!!!
@@ -145,12 +97,16 @@ export async function getStaticProps() {
     post.node.time = sorttimes[index];
   });
 
+
+
   // console.log([posts]);
 
   //配列posts：オブジェクトの時間の昇順ソート
   let result = posts.sort(function (a, b) {
     return a.node.time < b.node.time ? -1 : 1;
   });
+
+  console.log(result);
 
   // console.log([result]);
 
