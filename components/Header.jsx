@@ -7,14 +7,14 @@ const Header = () => {
       name: "CONTACT",
       slug: "contact",
     },
-    {
-      name: "ABOUT",
-      slug: "about",
-    },
-    {
-      name: "WORKS",
-      slug: "works",
-    },
+    // {
+    //   name: "ABOUT",
+    //   slug: "about",
+    // },
+    // {
+    //   name: "WORKS",
+    //   slug: "works",
+    // },
   ];
 
   // const [categories, setCategories] = useState([]);

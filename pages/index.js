@@ -69,8 +69,9 @@ export async function getStaticProps() {
     
     const a = Date.parse(time);
     // const b = new Date(a);
-
+//↑これだとvercelでUTC時間になってしまう、、、
     //LINE APIの動画みててたまたまみつけた
+    //vercelのタイムゾーンは日本対応していない？
     const b = new Date(a+ ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
   
 

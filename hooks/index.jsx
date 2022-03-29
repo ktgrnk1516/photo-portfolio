@@ -6,7 +6,7 @@ export const useScroll = (state) => {
     //いま参照している要素を取得
     const element = ref.current;
 
-    if (!element) {
+    if (!state) {
       return;
     }
 
