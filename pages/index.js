@@ -4,28 +4,21 @@ import styles from "../styles/Home.module.css";
 import { PostCard, FirstPhoto, TimeSlider } from "../components";
 import { getPosts } from "../services";
 import { useEffect } from "react";
-import { useScroll } from "../hooks";
+// import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick, isVisible }) {
-  //ローカルのpostデータ=>graphCMSから持ってくるからコメントアウト
-  // const posts = [
-  //   {
-  //     image: "https://drive.google.com/uc?id=1hHg5t7XvX-zvm4Bos-mPzF6e16n0-Orx",
-  //     time: "12/02/2022",
-  //     desc: "Osaka Night",
-  //     place: "Osaka",
-  //   },
-  // ];
+export default function Home({ posts, timeClick}) {
+  // console.log(posts);
+ 
 
-  
-  //ref
-  //timeClickの状態は、_app.js=>index.js(Home)=>postCard.jsxの順で渡している
-  // console.log(timeClick);
-  //refの定義！（カスタムhooksで外から持ってきている）
-  const postCardRef = useScroll(timeClick);
+  // //①カスタムhookのuseScroll
+  // //ここのindex.jsでpostCardRefというref名を定義
+  // //useScrollの引数として、stateを想定。=>_app.jsで定義したstate、timeClickを渡す。（clickすると変わるstate）
+  // //②timeClickの状態は、_app.js=>index.js(Home)=>postCard.jsxの順で渡している
+  // // console.log(timeClick);
+  // const postCardRef = useScroll(timeClick);
+  // //PostCard.jsでpostCardRefを定義するべき？？？？？
 
 
-  console.log(posts);
 
   return (
     <div className={styles.root}>
@@ -42,7 +35,10 @@ export default function Home({ posts, timeClick, isVisible }) {
           />
         </div>
 
-        <div className={styles.body_wrapper} ref={postCardRef}>
+        <div 
+        className={styles.body_wrapper} 
+        // ref={postCardRef}
+        >
           {posts.map((post) => (
             <PostCard
               post={post.node}

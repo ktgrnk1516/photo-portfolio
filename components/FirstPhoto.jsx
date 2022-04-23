@@ -8,7 +8,7 @@ const FirstPhoto = ({ posts }) => {
   let hh = time.getHours().toLocaleString("ja-JP");
   let mm = time.getMinutes().toLocaleString("ja-JP");
   let AMPM = hh + ":" + mm;
-  console.log(AMPM);
+  // console.log(AMPM);
 
   // if (time > 12) {
   //   time = "PM " + (time - 12);
@@ -26,23 +26,20 @@ const FirstPhoto = ({ posts }) => {
   const filterPosts = posts.filter(
     (post) => post.idx.substr(0, 2) === AMPM.substr(0, 2)
   );
-  console.log(filterPosts);
+  // console.log(filterPosts);
 
-  //現在時刻と一致するposts配列のidx（時間）の頭2文字がない時、現在時刻の+1時間で一致する配列を取得
-  let nexthh = (time.getHours() + 1).toLocaleString("ja-JP");
- console.log(nexthh);
 
-  const filterPostsPlusOne = posts.filter( (post) => 
-  post.idx.substr(0, 2) === nexthh.substr(0, 2)
-  );
-  console.log(filterPostsPlusOne);
-  const filterPostPlusOne =  filterPostsPlusOne[Math.floor(Math.random() * filterPostsPlusOne.length)].node;
+ 
 
   if (filterPosts.length === 0) {
+  const post = posts[Math.floor(Math.random() * posts.length)].node;
     return (
       <div className={styles.img_root}>
         <img
-          src={filterPostPlusOne.image.url}
+          src={
+            post.image.url
+        
+          }
           alt=""
           className={styles.img}
           style={{

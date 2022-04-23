@@ -1,14 +1,7 @@
 import "../styles/globals.css";
-// import { useScroll } from "../hooks";
-
-// import tailwindcss from 'tailwindcss'
 import React, {
   useState,
   useEffect,
-  useRef,
-  createRef,
-  useCallback,
-  forwardRef,
 } from "react";
 import { Layout } from "../components";
 
@@ -20,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    window.scrollY > 1400 ? setIsVisible(true) : setIsVisible(false);
+    window.scrollY > 890 ? setIsVisible(true) : setIsVisible(false);
   };
 
   //スクロールによって背景色を変える
@@ -29,22 +22,15 @@ function MyApp({ Component, pageProps }) {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  //時間帯を押すとスクロールする機能
-  // const ref = useRef();
-  // const useScroll = useCallback(() => {
-  //   refContents.current.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // }, [ref]);
-
+  //時間帯を押すとスクロールする機能（ここでは別で定義するカスタムhookに渡す引数であるstateを定義）
   //カスタムhookでもらうの状態と状態を変更する関数（最終的にLayout=>TimeSliderの順番に渡す）
-  const [timeClick, setTimeClick] = useState(false);
-  const handleTimeClick = () => {
-    setTimeClick(!timeClick);
+  // const [timeClick, setTimeClick] = useState("false");
+  const [timeClick, setTimeClick] = useState("");
+  const handleTimeClick = (e) => {
+    setTimeClick(e);
+    // setTimeClick(!timeClick);
+    console.log(e);
   };
-
-  //refの定義！（本当はpostCardで使う？？）
-  // const postCardRef = useScroll(timeClick);
 
   return (
     <>
