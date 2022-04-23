@@ -17,8 +17,11 @@ export const useScroll = (state) => {
     }
 
     //処理:
+    //【JavaScript】scrollIntoViewで指定した要素の位置までスクロールする
+    //blockプロパティ:centerで要素が中央にくるまでスクロール
     element.scrollIntoView({
       behavior: "smooth",
+      block: "center",
     });
   }, [state]);
   return ref;

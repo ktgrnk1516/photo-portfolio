@@ -27,10 +27,10 @@ const Header = () => {
 
   return (
     <div className="md:ml-8 md:mr-8 mx-auto px-0 mb-8 sticky top-0 z-50 bg-inherit sm:ml-0 sm:mr-0 ">
-      <div className=" w-full inline-block  py-6">
+      <div className=" w-full inline-block  py-5">
         <div className="text-center mb-4 md:float-left block md:mb-0">
           <Link href="/">
-            <span className="sm:ml-0 md:ml-4 lg:ml-4  cursor-pointer text-2xl text-inherit ">
+            <span className="sm:ml-0 md:ml-4 lg:ml-4  cursor-pointer text-xl text-inherit ">
               k t g r n k
             </span>
           </Link>

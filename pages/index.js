@@ -3,12 +3,11 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { PostCard, FirstPhoto, TimeSlider } from "../components";
 import { getPosts } from "../services";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 // import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick}) {
+export default function Home({ posts, timeClick }) {
   // console.log(posts);
- 
 
   // //①カスタムhookのuseScroll
   // //ここのindex.jsでpostCardRefというref名を定義
@@ -18,7 +17,18 @@ export default function Home({ posts, timeClick}) {
   // const postCardRef = useScroll(timeClick);
   // //PostCard.jsでpostCardRefを定義するべき？？？？？
 
+  const [firstSlider, setFirstSlider] = useState(false);
 
+  //少しでもスクロールしたらfirstSliderを表示する
+  const handleFirstSlider = () => {
+    window.scrollY > 300 ? setFirstSlider(true) : setFirstSlider(false);
+  };
+
+  //少しでもスクロールしたらfirstSliderを表示する
+  useEffect(() => {
+    window.addEventListener("scroll", handleFirstSlider);
+    return () => window.removeEventListener("scroll", handleFirstSlider);
+  }, []);
 
   return (
     <div className={styles.root}>
@@ -28,16 +38,22 @@ export default function Home({ posts, timeClick}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.body_root}>
-        <div className={styles.first_photo}>
+        <div 
+        // className={styles.first_photo}
+         className={
+          firstSlider ? `${styles.first_photo}   ${styles.show}` : `${styles.first_photo} `
+        }
+        
+        >
           <FirstPhoto
             // post={posts[0].node}
             posts={posts}
           />
         </div>
 
-        <div 
-        className={styles.body_wrapper} 
-        // ref={postCardRef}
+        <div
+          className={styles.body_wrapper}
+          // ref={postCardRef}
         >
           {posts.map((post) => (
             <PostCard
@@ -57,10 +73,6 @@ export default function Home({ posts, timeClick}) {
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
 
-
-
-
-
   //配列postsをソート/オブジェクトの昇順ソート
   //https://keizokuma.com/js-array-object-sort/
   //post.node.timeを時間のみの形にしたい（mapで？）
@@ -69,14 +81,14 @@ export async function getStaticProps() {
   });
   //mapでUTC時間をAM/PMの形に整形
   const sorttimes = posttimes1.map((time) => {
-    
     const a = Date.parse(time);
     // const b = new Date(a);
     //↑これだとvercelでUTC時間になってしまう、、、
     //vercelのタイムゾーンは日本対応していない？
     //LINE APIの動画みててたまたまみつけた
-    const b = new Date(a+ ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
-  
+    const b = new Date(
+      a + (new Date().getTimezoneOffset() + 9 * 60) * 60 * 1000
+    );
 
     //https://qiita.com/Naoki_kkc/items/2a29287834c453d23ecf
     //JavaScriptで時刻の二桁目をゼロ埋めするQiita
@@ -102,16 +114,14 @@ export async function getStaticProps() {
   });
   console.log(result);
   // console.log([result]);
-  
-//-----//-----//-----//-----//-----//-----
- //配列postsにidというkeyを新しく追加する "AM 8"とか
+
+  //-----//-----//-----//-----//-----//-----
+  //配列postsにidというkeyを新しく追加する "AM 8"とか
   //新しく追加する時はforEachを使うっぽい
   posts.forEach((e) => {
     e.idx = e.node.time.substr(0, 5);
   });
-//-----//-----//-----//-----//-----//-----
-
-
+  //-----//-----//-----//-----//-----//-----
 
   //AM/PMの形に整形
   let times = result.map((post) => {
@@ -136,16 +146,13 @@ export async function getStaticProps() {
   });
   //いらない？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 
-
   // //配列postsにidというkeyを新しく追加する "AM 8"とか
   // //新しく追加する時はforEachを使うっぽい
   // posts.forEach((e) => {
   //   e.idx = e.node.time.substr(0, 5);
   // });
 
-
   return {
     props: { posts },
   };
 }
-

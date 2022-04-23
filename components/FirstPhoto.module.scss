@@ -1,11 +1,18 @@
+// .firstRoot{
+//   width: 100vw;
+//   height: 100vh;
+// }
+
+
 .img_root {
   display: flex;
-  width: 35%;
-  height: 30%;
+  width: 80%;
+  height: 80%;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
+  object-fit: cover;
 
   .img_wrapper {
     display: flex;

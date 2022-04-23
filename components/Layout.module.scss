@@ -1,13 +1,11 @@
-
-
 .black_visible {
-  height: 400vh;
+  height: 350vh;
   background: #000;
   color: #fff;
   transition: 0.7s all ease;
 }
 .white_visible {
-  height: 400vh;
+  height: 350vh;
 
   background: #fff;
   color: #000;
@@ -17,7 +15,6 @@
 .test {
   display: flex;
   justify-content: center;
-  
 }
 
 .left_or_right {
@@ -60,5 +57,11 @@
 @media screen and (max-width: 480px) {
   .left {
     display: none;
+  }
+  .black_visible {
+    height: 450vh;
+  }
+  .white_visible {
+    height: 450vh;
   }
 }

@@ -1,3 +1,5 @@
+
+
 .body_root {
   /* margin: 0 120px; */
   margin: 0 10%;
@@ -6,12 +8,26 @@
 .first_photo {
   display: flex;
   justify-content: center;
+  height: 100vh;
+  position: fixed;
+  margin-top: -100vh;
+  width: 80%;
+
+  /* //下から上に表示させるために最初非表示 */
+  opacity: 1;
+  transition: all 0.4s ease-out;
 }
 
+/* //.showが追加されたら、正常な状態に戻す */
+.show {
+  opacity: 0;
+  transform: none;
+}
 .body_wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 100vh;
 }
 
 @media screen and (max-width: 926px) {
@@ -28,5 +44,16 @@
   .first_photo {
     display: flex;
     justify-content: center;
+    width: 100%;
+  }
+
+  .first_photo {
+    align-items: center;
+    height: 100vh;
+    margin-top: -110vh;
+  }
+
+  .body_wrapper {
+    margin-top: 100vh;
   }
 }

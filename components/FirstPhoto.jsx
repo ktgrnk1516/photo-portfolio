@@ -28,18 +28,12 @@ const FirstPhoto = ({ posts }) => {
   );
   // console.log(filterPosts);
 
-
- 
-
   if (filterPosts.length === 0) {
-  const post = posts[Math.floor(Math.random() * posts.length)].node;
+    const post = posts[Math.floor(Math.random() * posts.length)].node;
     return (
       <div className={styles.img_root}>
         <img
-          src={
-            post.image.url
-        
-          }
+          src={post.image.url}
           alt=""
           className={styles.img}
           style={{
@@ -58,22 +52,24 @@ const FirstPhoto = ({ posts }) => {
     const filterPost =
       filterPosts[Math.floor(Math.random() * filterPosts.length)].node;
     return (
-      <div className={styles.img_root}>
-        <img
-          src={filterPost.image.url}
-          alt=""
-          className={styles.img}
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            // margin: "20px",
-          }}
-        />
-      </div>
+      // <div className="firstRoot">
+        <div className={styles.img_root}>
+          <img
+            src={filterPost.image.url}
+            alt=""
+            className={styles.img}
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              // margin: "20px",
+            }}
+          />
+        </div>
+      // </div>
     );
   }
 
