@@ -24,6 +24,9 @@ export default function Home({ posts, timeClick, isVisible }) {
   //refの定義！（カスタムhooksで外から持ってきている）
   const postCardRef = useScroll(timeClick);
 
+
+  console.log(posts);
+
   return (
     <div className={styles.root}>
       <Head>
@@ -58,6 +61,10 @@ export default function Home({ posts, timeClick, isVisible }) {
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
 
+
+
+
+
   //配列postsをソート/オブジェクトの昇順ソート
   //https://keizokuma.com/js-array-object-sort/
   //post.node.timeを時間のみの形にしたい（mapで？）
@@ -69,9 +76,9 @@ export async function getStaticProps() {
     
     const a = Date.parse(time);
     // const b = new Date(a);
-//↑これだとvercelでUTC時間になってしまう、、、
-    //LINE APIの動画みててたまたまみつけた
+    //↑これだとvercelでUTC時間になってしまう、、、
     //vercelのタイムゾーンは日本対応していない？
+    //LINE APIの動画みててたまたまみつけた
     const b = new Date(a+ ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
   
 
@@ -86,39 +93,34 @@ export async function getStaticProps() {
       .padStart(2, "0");
     const saisyutimes = `${hh}:${mm}`;
 
-    return saisyutimes; //mapでreturn!!!
+    return saisyutimes; //map=>returnの組み合わせで整形していっている。
   });
-  // sorttimes.sort(function (a, b) {
-  //   return a > b ? 1 : -1;
-  // });
-  // console.log(sorttimes);
 
   //配列を書き換え
   posts.map((post, index) => {
     post.node.time = sorttimes[index];
   });
-
-
-
-  // console.log([posts]);
-
   //配列posts：オブジェクトの時間の昇順ソート
   let result = posts.sort(function (a, b) {
     return a.node.time < b.node.time ? -1 : 1;
   });
-
   console.log(result);
-
   // console.log([result]);
+  
+//-----//-----//-----//-----//-----//-----
+ //配列postsにidというkeyを新しく追加する "AM 8"とか
+  //新しく追加する時はforEachを使うっぽい
+  posts.forEach((e) => {
+    e.idx = e.node.time.substr(0, 5);
+  });
+//-----//-----//-----//-----//-----//-----
 
-  //-----------------------------------//
+
 
   //AM/PMの形に整形
-
   let times = result.map((post) => {
-    return post.node.time; //整形したい
+    return post.node.time; //整形できるようにpostsからtimeを抽出
   });
-
   //mapでUTC時間をAM/PMの形に整形
   const posttimes2 = times.map((time) => {
     // console.log(time.substr(0, 2));
@@ -128,21 +130,26 @@ export async function getStaticProps() {
     const saisyutimes =
       HH < 12 ? `AM ${parseInt(HH)}:${MM}` : `PM ${HH - 12}:${MM}`;
 
-    return saisyutimes; //mapでreturn!!!
+    return saisyutimes; //map=>returnの組み合わせで整形していっている。
   });
-
   // console.log(posttimes2);
 
+  //配列の書き換え
   posts.map((post, index) => {
     post.node.time = posttimes2[index];
   });
+  //いらない？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 
-  //配列postsにidというkeyを新しく追加する "AM 8"とか
-  posts.forEach((e) => {
-    e.idx = e.node.time.substr(0, 4);
-  });
+
+  // //配列postsにidというkeyを新しく追加する "AM 8"とか
+  // //新しく追加する時はforEachを使うっぽい
+  // posts.forEach((e) => {
+  //   e.idx = e.node.time.substr(0, 5);
+  // });
+
 
   return {
     props: { posts },
   };
 }
+
