@@ -15,7 +15,7 @@
 
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;
-  transition: all 0.4s ease-out;
+  transition: all 0.4s ease;
 }
 
 /* //.showが追加されたら、正常な状態に戻す */
@@ -50,7 +50,7 @@
   .first_photo {
     align-items: center;
     height: 100vh;
-    margin-top: -110vh;
+    margin-top: -120vh;
   }
 
   .body_wrapper {
