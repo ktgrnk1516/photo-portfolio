@@ -9,22 +9,21 @@ function MyApp({ Component, pageProps }) {
   //スクロールによって背景色を変える
   const [isVisible, setIsVisible] = useState(false);
 
-  // const toggleVisibility = () => {
-  //   window.scrollY > 890 ? setIsVisible(true) : setIsVisible(false);
-  // };
-  const toggleVisibility = () => {
-    window.scrollY > 200 ? setIsVisible(true) : setIsVisible(false);
-  };
+  console.log(isVisible);
 
-  //スクロールによって背景色を変える
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+  //スクロールで背景色を変える処理
+  // const toggleVisibility = (state) => {
+  //   window.scrollY > 200 ? setIsVisible(true) : setIsVisible(false);
+  // };
+
+  // //スクロールによって背景色を変える
+  // useEffect(() => {
+  //   window.addEventListener("scroll", toggleVisibility);
+  //   return () => window.removeEventListener("scroll", toggleVisibility);
+  // }, []);
 
   //時間帯を押すとスクロールする機能（ここでは別で定義するカスタムhookに渡す引数であるstateを定義）
-  //カスタムhookでもらうの状態と状態を変更する関数（最終的にLayout=>TimeSliderの順番に渡す）
-  // const [timeClick, setTimeClick] = useState("false");
+  //カスタムhookでもらうの状態と状態を変更する関数（関数：Layout=>TimeSliderの順番に渡す。状態：PostCard.jsに渡す。）
   const [timeClick, setTimeClick] = useState("");
   const handleTimeClick = (e) => {
     setTimeClick(e);
@@ -39,7 +38,8 @@ function MyApp({ Component, pageProps }) {
           {...pageProps}
           timeClick={timeClick}
           isVisible={isVisible}
-          toggleVisibility={toggleVisibility}
+          setIsVisible={setIsVisible}
+          // toggleVisibility={toggleVisibility}
         />
         {/* <div 
         ref={postCardRef}

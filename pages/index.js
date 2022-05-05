@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 // import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick, isVisible }) {
+export default function Home({ posts, timeClick, isVisible,setIsVisible }) {
   // console.log(posts);
 
   // //①カスタムhookのuseScroll
@@ -64,6 +64,7 @@ export default function Home({ posts, timeClick, isVisible }) {
               idx={post.idx}
               timeClick={timeClick}
               isVisible={isVisible}
+              setIsVisible={setIsVisible}
             />
           ))}
         </div>
