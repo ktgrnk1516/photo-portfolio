@@ -1,0 +1,11 @@
+.root {
+  height: 50vh;
+}
+
+
+@media screen and (max-width: 480px) {
+  .root {
+    // width: 100vw;
+    height: 30vh;
+  }
+}

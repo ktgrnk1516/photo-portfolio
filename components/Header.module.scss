@@ -1,0 +1,72 @@
+.root {
+  margin-left: 32px;
+  margin-right: 32px;
+
+  position: sticky;
+  top: 0;
+
+  background: inherit;
+  z-index: 99;
+}
+
+.root2 {
+  width: 100%;
+
+  //ヘッダーの高さ
+  padding: 28px 0px;
+
+  //横並びに
+  display: flex;
+  justify-content: space-between;
+}
+
+.root3 {
+  //ktgrnk
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.root4 {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  // justify-content: space-between;
+
+  // background: gray;
+  // padding-right: 32px;
+}
+
+.span {
+  //ktgrnk
+  font-size: 16px;
+  cursor: pointer;
+}
+.span2 {
+  //右のメニュー
+  font-size: 12px;
+  cursor: pointer;
+
+  display: flex;
+
+  //右のメニューの余白
+  margin-left: 24px;
+}
+.span:hover,
+.span2:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 480px) {
+  .root {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .root3{
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  .root4{
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}

@@ -1,3 +1,5 @@
+//TimeSliderの時間を押したら、該当のPhotoCardの要素へ遷移するカスタムフック（useRef）
+
 import React, { useEffect, useRef } from "react";
 
 export const useScroll = (state) => {
@@ -6,8 +8,8 @@ export const useScroll = (state) => {
     //いま参照している要素を取得
     const element = ref.current;
     const a_element = element.outerHTML.substr(5);
-    const b_element = a_element.slice( 0, -9 );
-    
+    const b_element = a_element.slice(0, -9);
+
     // console.log(a_element);
     // console.log(b_element);
     // console.log(state);

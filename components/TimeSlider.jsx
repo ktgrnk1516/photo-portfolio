@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from "react";
+import React from "react";
 import Data from "./data.json";
 import styles from "./TimeSlider.module.scss";
 

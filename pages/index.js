@@ -3,10 +3,11 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { PostCard, FirstPhoto, TimeSlider } from "../components";
 import { getPosts } from "../services";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 // import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick }) {
+export default function Home({ posts, timeClick, isVisible }) {
   // console.log(posts);
 
   // //①カスタムhookのuseScroll
@@ -21,7 +22,7 @@ export default function Home({ posts, timeClick }) {
 
   //少しでもスクロールしたらfirstSliderを表示する
   const handleFirstSlider = () => {
-    window.scrollY > 300 ? setFirstSlider(true) : setFirstSlider(false);
+    window.scrollY > 1 ? setFirstSlider(true) : setFirstSlider(false);
   };
 
   //少しでもスクロールしたらfirstSliderを表示する
@@ -38,12 +39,13 @@ export default function Home({ posts, timeClick }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.body_root}>
-        <div 
-        // className={styles.first_photo}
-         className={
-          firstSlider ? `${styles.first_photo}   ${styles.show}` : `${styles.first_photo} `
-        }
-        
+        <div
+          // className={styles.first_photo}
+          className={
+            firstSlider
+              ? `${styles.first_photo}   ${styles.show}`
+              : `${styles.first_photo} `
+          }
         >
           <FirstPhoto
             // post={posts[0].node}
@@ -55,14 +57,18 @@ export default function Home({ posts, timeClick }) {
           className={styles.body_wrapper}
           // ref={postCardRef}
         >
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <PostCard
               post={post.node}
-              key={post.node.time}
+              key={index}
               idx={post.idx}
               timeClick={timeClick}
+              isVisible={isVisible}
             />
           ))}
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     </div>

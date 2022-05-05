@@ -1,17 +1,18 @@
-
-
 .body_root {
-  /* margin: 0 120px; */
-  margin: 0 10%;
+  margin: 0 5%;
 }
 
 .first_photo {
   display: flex;
   justify-content: center;
   height: 100vh;
+
+  /* これ！ */
+  width: 100vw;
+
   position: fixed;
   margin-top: -100vh;
-  width: 80%;
+  padding-right: 10%;
 
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;
@@ -23,6 +24,8 @@
   opacity: 0;
   transform: none;
 }
+
+/* 写真の並び */
 .body_wrapper {
   display: flex;
   justify-content: center;
@@ -45,6 +48,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-right: 0;
   }
 
   .first_photo {

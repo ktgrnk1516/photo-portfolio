@@ -3,8 +3,9 @@
 //   height: 100vh;
 // }
 
-
 .img_root {
+  // margin: 0 5%;
+
   display: flex;
   width: 80%;
   height: 80%;
@@ -15,7 +16,7 @@
   object-fit: cover;
 
   .img_wrapper {
-    display: flex;
+    // display: flex;
     // margin-top: 60px;
     // margin-left: 130px;
     // width: 100%;
@@ -33,7 +34,7 @@
       // margin-right: 20%;
       // height: 80%;
       text-align: center;
-      justify-content: center;
+      // justify-content: center;
       align-items: center;
     }
   }

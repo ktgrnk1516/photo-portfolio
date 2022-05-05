@@ -1,8 +1,5 @@
 import "../styles/globals.css";
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import { Layout } from "../components";
 
 //useRefでスクロール
@@ -12,8 +9,11 @@ function MyApp({ Component, pageProps }) {
   //スクロールによって背景色を変える
   const [isVisible, setIsVisible] = useState(false);
 
+  // const toggleVisibility = () => {
+  //   window.scrollY > 890 ? setIsVisible(true) : setIsVisible(false);
+  // };
   const toggleVisibility = () => {
-    window.scrollY > 890 ? setIsVisible(true) : setIsVisible(false);
+    window.scrollY > 200 ? setIsVisible(true) : setIsVisible(false);
   };
 
   //スクロールによって背景色を変える
@@ -35,7 +35,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Layout isVisible={isVisible} handleTimeClick={handleTimeClick}>
-        <Component {...pageProps} timeClick={timeClick} isVisible={isVisible} />
+        <Component
+          {...pageProps}
+          timeClick={timeClick}
+          isVisible={isVisible}
+          toggleVisibility={toggleVisibility}
+        />
         {/* <div 
         ref={postCardRef}
         >ここまで</div> */}
