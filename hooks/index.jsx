@@ -1,4 +1,5 @@
 // カスタムフック（useRef）
+//https://lab.syncer.jp/Web/JavaScript/Snippet/10/
 
 import { useEffect, useRef } from "react";
 

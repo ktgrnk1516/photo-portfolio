@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 // import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick, isVisible,setIsVisible }) {
+export default function Home({ posts, timeClick, isVisible, setIsVisible }) {
   // console.log(posts);
 
   // //①カスタムhookのuseScroll
@@ -22,7 +22,17 @@ export default function Home({ posts, timeClick, isVisible,setIsVisible }) {
 
   //少しでもスクロールしたらfirstSliderを表示する
   const handleFirstSlider = () => {
-    window.scrollY > 1 ? setFirstSlider(true) : setFirstSlider(false);
+    
+    // window.scrollY > 200 ? setFirstSlider(true) : setFirstSlider(false);
+    
+    
+    const targetElement = document.getElementById("flag");
+    const clientRect = targetElement.getBoundingClientRect();
+    const px =
+      // window.pageYOffset +
+      clientRect.top -300;
+
+    window.scrollY > px ? setFirstSlider(true) : setFirstSlider(false);
   };
 
   //少しでもスクロールしたらfirstSliderを表示する
@@ -40,7 +50,11 @@ export default function Home({ posts, timeClick, isVisible,setIsVisible }) {
       </Head>
       <div className={styles.body_root}>
         <div
-          // className={styles.first_photo}
+          // className={
+          //   `${styles.first_photo} ` +
+          //   (firstSlider ? `${styles.show}` : "") +
+          //   +(firstSlider2 ? `${styles.show2}` : "")
+          // }
           className={
             firstSlider
               ? `${styles.first_photo}   ${styles.show}`
@@ -54,6 +68,7 @@ export default function Home({ posts, timeClick, isVisible,setIsVisible }) {
         </div>
 
         <div
+          id="flag"
           className={styles.body_wrapper}
           // ref={postCardRef}
         >

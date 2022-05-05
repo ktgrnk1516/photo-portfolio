@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import styles from "./FirstPhoto.module.scss";
 
 const FirstPhoto = ({ posts }) => {
@@ -10,49 +10,42 @@ const FirstPhoto = ({ posts }) => {
   let AMPM = hh + ":" + mm;
   // console.log(AMPM);
 
-  // if (time > 12) {
-  //   time = "PM " + (time - 12);
-  // } else {
-  //   time = "AM " + time;
-  // }
-  // const threemojitime = time.toLocaleString().substr(0, 4);
-  // console.log(threemojitime);
-
-  // const filterPosts = posts.filter(
-  //   (post) => post.node.time.toLocaleString().substr(0, 4) === threemojitime
-  // );
-
   //現在時刻と、posts配列のidx（時間）の頭2文字の時間が一致する配列を取得
   const filterPosts = posts.filter(
     (post) => post.idx.substr(0, 2) === AMPM.substr(0, 2)
   );
-  // console.log(filterPosts);
+  console.log(filterPosts);
 
-  if (filterPosts.length === 0) {
-    const post = posts[Math.floor(Math.random() * posts.length)].node;
-    return (
-      <div className={styles.img_root}>
-        <img
-          src={post.image.url}
-          alt=""
-          className={styles.img}
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            // margin: "20px",
-          }}
-        />
-      </div>
-    );
-  } else {
-    const filterPost =
-      filterPosts[Math.floor(Math.random() * filterPosts.length)].node;
-    return (
-      // <div className="firstRoot">
+
+
+
+
+  //再度レンダリングを防ぐためにuseMemo！！！
+  const randomFirstPhoto = useMemo(() => {
+    if (filterPosts.length === 0) {
+      const post = posts[Math.floor(Math.random() * posts.length)].node;
+      return (
+        <div className={styles.img_root}>
+          <img
+            src={post.image.url}
+            alt=""
+            className={styles.img}
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          />
+        </div>
+      );
+    } else {
+      const filterPost =
+        filterPosts[Math.floor(Math.random() * filterPosts.length)].node;
+      return (
+        // <div className="firstRoot">
         <div className={styles.img_root}>
           <img
             src={filterPost.image.url}
@@ -69,23 +62,20 @@ const FirstPhoto = ({ posts }) => {
             }}
           />
         </div>
-      // </div>
-    );
-  }
+        // </div>
+      );
+    }
+  }, []);
 
-  // return (
-  //   <div className={styles.root}>
-  //     <div className={styles.img_wrapper}>
-  //       <img
-  //         // src={filterPost.image.url}
-  //         src={filterPosts.length !== 0 ? filterPost.image.url : post.image.url}
-  //         // src={ post.image.url}
-  //         alt=""
-  //         className={styles.img}
-  //       />
-  //     </div>
-  //   </div>
-  // );
+
+
+
+
+
+  //上のアロー関数で、jsxをreturnしているのを下記で表示！！
+  return <>{randomFirstPhoto}</>;
+
+
 };
 
 export default FirstPhoto;
