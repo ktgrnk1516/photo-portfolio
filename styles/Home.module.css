@@ -39,11 +39,16 @@
 
 @media screen and (max-width: 926px) {
   .body_root {
-    margin: 0px 0px;
+    margin: 0 10%;
+    /* background: pink; */
+  }
+
+  .first_photo {
+    padding-right: 20%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .body_root {
     margin: 0px 0px;
   }
@@ -53,9 +58,6 @@
     justify-content: center;
     width: 100%;
     padding-right: 0;
-  }
-
-  .first_photo {
     align-items: center;
     height: 100vh;
     margin-top: -120vh;

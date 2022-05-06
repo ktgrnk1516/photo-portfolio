@@ -1,7 +1,7 @@
 // カスタムフック（useRef）
 //https://lab.syncer.jp/Web/JavaScript/Snippet/10/
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect,  useRef } from "react";
 
 export const useScroll = (state, setIsVisible) => {
   const ref = useRef(null);
@@ -31,8 +31,12 @@ export const useScroll = (state, setIsVisible) => {
     });
   }, [state]);
 
+
+
+  
+
   ////機能②背景色の変更
-  useEffect(() => {
+  const bgGround = useCallback(() => {
     //いま参照している要素を取得
     const element = ref.current;
     const a_element = element.outerHTML.substr(5);
@@ -59,15 +63,15 @@ export const useScroll = (state, setIsVisible) => {
       const d_element = c_element.slice(0, -9);
 
       // 時間によって処理を分ける=>処理じっくり考える
-      if (b_element !== "PM 6") {
+      if (d_element !== "PM 6") {
         return;
       }
-      if (b_element === "PM 6") {
+      if (d_element === "PM 6") {
         //スクロールで背景色を変える処理
-        console.log(entries[0].target);
+        // console.log(entries[0].target);
 
         const clientRect = entries[0].target.getBoundingClientRect();
-        const px = window.pageYOffset + clientRect.top - 500;
+        const px = window.pageYOffset + clientRect.top - 400;
         //↑該当時間の要素等の最後になるから、2段くらいあげる（-600のとこ）
         // console.log(px);
         const toggleVisibility = () => {
@@ -78,6 +82,10 @@ export const useScroll = (state, setIsVisible) => {
         return () => window.removeEventListener("scroll", toggleVisibility);
       }
     }
+  }, []);
+
+  useEffect(() => {
+    bgGround();
   }, []);
 
   return ref;

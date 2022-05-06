@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   //スクロールによって背景色を変える
   const [isVisible, setIsVisible] = useState(false);
 
-  console.log(isVisible);
+  // console.log(isVisible);
 
   //スクロールで背景色を変える処理
   // const toggleVisibility = (state) => {
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
   const handleTimeClick = (e) => {
     setTimeClick(e);
     // setTimeClick(!timeClick);
-    console.log(e);
+    // console.log(e);
   };
 
   return (
@@ -39,11 +39,7 @@ function MyApp({ Component, pageProps }) {
           timeClick={timeClick}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
-          // toggleVisibility={toggleVisibility}
         />
-        {/* <div 
-        ref={postCardRef}
-        >ここまで</div> */}
       </Layout>
     </>
   );

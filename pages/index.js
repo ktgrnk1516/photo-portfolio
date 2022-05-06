@@ -22,15 +22,13 @@ export default function Home({ posts, timeClick, isVisible, setIsVisible }) {
 
   //少しでもスクロールしたらfirstSliderを表示する
   const handleFirstSlider = () => {
-    
     // window.scrollY > 200 ? setFirstSlider(true) : setFirstSlider(false);
-    
-    
+
     const targetElement = document.getElementById("flag");
     const clientRect = targetElement.getBoundingClientRect();
     const px =
       // window.pageYOffset +
-      clientRect.top -300;
+      clientRect.top - 300;
 
     window.scrollY > px ? setFirstSlider(true) : setFirstSlider(false);
   };
@@ -130,12 +128,43 @@ export async function getStaticProps() {
   posts.map((post, index) => {
     post.node.time = sorttimes[index];
   });
+
+
+
   //配列posts：オブジェクトの時間の昇順ソート
   let result = posts.sort(function (a, b) {
     return a.node.time < b.node.time ? -1 : 1;
   });
-  console.log(result);
-  // console.log([result]);
+  const result1 = result.map((r) => r.node.time.substr(0, 2));
+  console.log(result1);
+
+
+
+  
+  //現在の時間を起点に並び替え
+  let time = new Date();
+  let hh = time.getHours().toLocaleString("ja-JP").padStart(2, "0");
+  let mm = time.getMinutes().toLocaleString("ja-JP");
+  let AMPM = hh + ":" + mm;
+  const result3 = AMPM.substr(0, 2);
+  // const result3 = "10"; //★★★★★★★★★
+  // console.log(result3);
+
+  //現在時刻に一致するindexを調べる
+  let ind = result1.indexOf(result3);
+  console.log(ind);
+
+  ////ind番目の要素から最後までの要素を取り出す
+  let a2 = result1.slice(ind);
+  // console.log(a2);
+
+  ////最初からind番目-1までの要素を取り出す
+  let a3 = result1.slice(0,ind);
+  console.log(a3); //★★★★★★★★★★★
+
+  //★★★★★★★★★★★結合
+  a2.push(...a3);
+  console.log(a2);
 
   //-----//-----//-----//-----//-----//-----
   //配列postsにidというkeyを新しく追加する "AM 8"とか
@@ -147,7 +176,9 @@ export async function getStaticProps() {
 
   //AM/PMの形に整形
   let times = result.map((post) => {
+    // let times = a3.map((post) => {
     return post.node.time; //整形できるようにpostsからtimeを抽出
+    return post; //整形できるようにpostsからtimeを抽出
   });
   //mapでUTC時間をAM/PMの形に整形
   const posttimes2 = times.map((time) => {

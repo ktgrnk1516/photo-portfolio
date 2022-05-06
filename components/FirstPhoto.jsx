@@ -14,11 +14,7 @@ const FirstPhoto = ({ posts }) => {
   const filterPosts = posts.filter(
     (post) => post.idx.substr(0, 2) === AMPM.substr(0, 2)
   );
-  console.log(filterPosts);
-
-
-
-
+  // console.log(filterPosts);
 
   //再度レンダリングを防ぐためにuseMemo！！！
   const randomFirstPhoto = useMemo(() => {
@@ -30,14 +26,14 @@ const FirstPhoto = ({ posts }) => {
             src={post.image.url}
             alt=""
             className={styles.img}
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-            }}
+            // style={{
+            //   objectFit: "cover",
+            //   width: "100%",
+            //   height: "100%",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            //   textAlign: "center",
+            // }}
           />
         </div>
       );
@@ -51,15 +47,15 @@ const FirstPhoto = ({ posts }) => {
             src={filterPost.image.url}
             alt=""
             className={styles.img}
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-              // margin: "20px",
-            }}
+            // style={{
+            //   objectFit: "cover",
+            //   width: "100%",
+            //   height: "100%",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            //   textAlign: "center",
+            //   // margin: "20px",
+            // }}
           />
         </div>
         // </div>
@@ -67,15 +63,8 @@ const FirstPhoto = ({ posts }) => {
     }
   }, []);
 
-
-
-
-
-
   //上のアロー関数で、jsxをreturnしているのを下記で表示！！
   return <>{randomFirstPhoto}</>;
-
-
 };
 
 export default FirstPhoto;
