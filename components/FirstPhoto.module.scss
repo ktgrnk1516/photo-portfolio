@@ -4,19 +4,20 @@
 // }
 
 .img_root {
-  margin:  5% 0;
+  margin: 5% 0;
 
   display: flex;
-  width: 80%;
-  height: 60%;
+  width: 50%;
+  height: 30%;
+
   justify-content: center;
   align-items: center;
   text-align: center;
   // margin-bottom: 80px;
   object-fit: cover;
   cursor: pointer;
-  
-  
+
+  margin-top: 100px;
 
   .img_wrapper {
     // display: flex;
@@ -31,7 +32,6 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    
 
     .img {
       object-fit: cover;
@@ -40,9 +40,13 @@
       justify-content: center;
       text-align: center;
       align-items: center;
-      
-      
     }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .img_root {
+    height: 30%;
   }
 }
 

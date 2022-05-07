@@ -17,7 +17,7 @@
 
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;
-  transition: all 0.6s ease;
+  transition: all 0.5s ease;
 }
 
 /* //.showが追加されたら、正常な状態に戻す */

@@ -28,7 +28,7 @@ export default function Home({ a2, timeClick, isVisible, setIsVisible }) {
     const clientRect = targetElement.getBoundingClientRect();
     const px =
       // window.pageYOffset +
-      clientRect.top - 300;
+      clientRect.top - 350;
 
     window.scrollY > px ? setFirstSlider(true) : setFirstSlider(false);
   };
@@ -48,11 +48,6 @@ export default function Home({ a2, timeClick, isVisible, setIsVisible }) {
       </Head>
       <div className={styles.body_root}>
         <div
-          // className={
-          //   `${styles.first_photo} ` +
-          //   (firstSlider ? `${styles.show}` : "") +
-          //   +(firstSlider2 ? `${styles.show2}` : "")
-          // }
           className={
             firstSlider
               ? `${styles.first_photo}   ${styles.show}`
@@ -204,6 +199,5 @@ export async function getStaticProps() {
     props: { a2 },
   };
 }
-
 
 //postsをa2に変換（現在時刻によって並び替える！（オブジェクトの並び替えslice）

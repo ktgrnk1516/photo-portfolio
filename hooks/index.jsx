@@ -29,7 +29,7 @@ export const useScroll = (state, setIsVisible) => {
       behavior: "smooth",
       block: "center",
     });
-  }, []);
+  }, [state]);
 
 
   useEffect(() => {

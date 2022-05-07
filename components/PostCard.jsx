@@ -14,6 +14,14 @@ import Fade from "@material-ui/core/Fade";
 //カスタムフックのインポート
 import { useScroll } from "../hooks"; //TimeSlider
 
+const style = {
+  modal: {
+    "&:focus": {
+      outline: "none",
+    },
+  },
+};
+
 const PostCard = ({ post, timeClick, isVisible, setIsVisible }) => {
   //カスタムhookのuseScroll
   const postCardRef = useScroll(timeClick, setIsVisible);
@@ -56,15 +64,16 @@ const PostCard = ({ post, timeClick, isVisible, setIsVisible }) => {
         // closeAfterTransition
         // BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 35000,
+          timeout: 300000,
         }}
       >
-        <Fade in={open} className={styles.box}>
+        <Fade sx={style} in={open} className={styles.box}>
           <div>
             <button className={styles.closeButton} onClick={handleClose}>
               <span>&times;</span>
             </button>
             <img src={post.image.url} alt="img" />　
+            <div className={styles.post_time}>{post.time}</div>
           </div>
         </Fade>
       </Modal>

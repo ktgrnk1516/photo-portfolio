@@ -76,16 +76,16 @@
 
 .black_visible {
   background: #000;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.911);
 }
 .white_visible {
   background: #fff;
-  color: #000;
+  color: rgb(0, 0, 0);
 }
 
 .modal {
   border: 0px none;
-  outline: none;
+  outline: 0px;
 }
 
 .box {
@@ -98,9 +98,14 @@
 
   //超重要
   display: flex;
+  justify-content: center;
   align-items: center;
-
   position: relative;
+
+  img {
+    width: 50%;
+    height: 60%;
+  }
 
   button {
     position: absolute;
@@ -117,11 +122,33 @@
     span {
       // border: 0.5px solid;
       font-size: 70px;
+      font-weight: 100;
     }
   }
 
   img {
     object-fit: cover;
+    position: relative;
+  }
+
+  .post_time {
+    position: absolute;
+    bottom: 8%;
+    // postion abusoluteで左右中央寄せ
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    // postion abusoluteで左右中央寄せ
+
+    height: 40px;
+    font-size: 25px;
+    font-weight: 100;
+    font-size: small;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
   }
 }
 
@@ -157,6 +184,15 @@
       padding-top: 140px;
     }
   }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    img {
+      // margin-left: 100px;
+      width: 50%;
+    }
+  }
 }
 
 @media screen and (max-width: 834px) {
@@ -164,8 +200,10 @@
     width: 200px;
     height: 200px;
     //ここを変更
-    margin-right: 7px;
-    margin-left: 7px;
+    margin-right: 6px;
+    margin-left: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 
     figure.hover_parent {
       width: 100%;
@@ -198,8 +236,10 @@
     width: 172.5px;
     height: 172.5px;
     //ここを変更
-    margin-right: 7px;
-    margin-left: 7px;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 
     figure.hover_parent {
       width: 100%;
@@ -226,11 +266,13 @@
     }
   }
   .box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 95%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-left: 18px;
+      // margin-left: 100px;
+      width: 100%;
+    }
   }
 }
