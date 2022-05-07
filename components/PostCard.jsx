@@ -5,7 +5,7 @@ import classes from "./PostCard.module.scss";
 //カスタムフックのインポート
 import { useScroll } from "../hooks"; //TimeSlider
 
-const PostCard = ({ post, timeClick, setIsVisible }) => {
+const PostCard = React.memo(({ post, timeClick, setIsVisible }) => {
   //カスタムhookのuseScroll
   const postCardRef = useScroll(timeClick, setIsVisible);
   //機能①
@@ -28,6 +28,6 @@ const PostCard = ({ post, timeClick, setIsVisible }) => {
       </figure>
     </div>
   );
-};
+});
 
 export default PostCard;

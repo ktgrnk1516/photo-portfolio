@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 // import { useScroll } from "../hooks";
 
-export default function Home({ posts, timeClick, isVisible, setIsVisible }) {
+export default function Home({ a2, timeClick, isVisible, setIsVisible }) {
   // console.log(posts);
 
   // //①カスタムhookのuseScroll
@@ -61,7 +61,7 @@ export default function Home({ posts, timeClick, isVisible, setIsVisible }) {
         >
           <FirstPhoto
             // post={posts[0].node}
-            posts={posts}
+            posts={a2}
           />
         </div>
 
@@ -70,7 +70,7 @@ export default function Home({ posts, timeClick, isVisible, setIsVisible }) {
           className={styles.body_wrapper}
           // ref={postCardRef}
         >
-          {posts.map((post, index) => (
+          {a2.map((post, index) => (
             <PostCard
               post={post.node}
               key={index}
@@ -129,18 +129,17 @@ export async function getStaticProps() {
     post.node.time = sorttimes[index];
   });
 
-
-
-  //配列posts：オブジェクトの時間の昇順ソート
+  //配列posts：オブジェクトの時間の昇順ソート（すでに〇〇：〇〇も形式になっている？）
   let result = posts.sort(function (a, b) {
     return a.node.time < b.node.time ? -1 : 1;
   });
-  const result1 = result.map((r) => r.node.time.substr(0, 2));
-  console.log(result1);
 
+  // console.log(result);
 
+  // { node: { image: [Object], time: '15:32', place: null, desc: null } },
 
-  
+  //--------------------//--------------------//--------------------//--------------------//--------------------
+
   //現在の時間を起点に並び替え
   let time = new Date();
   let hh = time.getHours().toLocaleString("ja-JP").padStart(2, "0");
@@ -151,16 +150,18 @@ export async function getStaticProps() {
   // console.log(result3);
 
   //現在時刻に一致するindexを調べる
+  const result1 = result.map((r) => r.node.time.substr(0, 2));
+  console.log(result1);
   let ind = result1.indexOf(result3);
-  console.log(ind);
+  // console.log(ind);
 
   ////ind番目の要素から最後までの要素を取り出す
-  let a2 = result1.slice(ind);
+  let a2 = result.slice(ind);
   // console.log(a2);
 
   ////最初からind番目-1までの要素を取り出す
-  let a3 = result1.slice(0,ind);
-  console.log(a3); //★★★★★★★★★★★
+  let a3 = result.slice(0, ind);
+  // console.log(a3);
 
   //★★★★★★★★★★★結合
   a2.push(...a3);
@@ -169,16 +170,17 @@ export async function getStaticProps() {
   //-----//-----//-----//-----//-----//-----
   //配列postsにidというkeyを新しく追加する "AM 8"とか
   //新しく追加する時はforEachを使うっぽい
-  posts.forEach((e) => {
+  a2.forEach((e) => {
     e.idx = e.node.time.substr(0, 5);
   });
   //-----//-----//-----//-----//-----//-----
 
+  //--------------------//--------------------//--------------------//--------------------
+
   //AM/PMの形に整形
-  let times = result.map((post) => {
+  let times = a2.map((post) => {
     // let times = a3.map((post) => {
     return post.node.time; //整形できるようにpostsからtimeを抽出
-    return post; //整形できるようにpostsからtimeを抽出
   });
   //mapでUTC時間をAM/PMの形に整形
   const posttimes2 = times.map((time) => {
@@ -194,18 +196,14 @@ export async function getStaticProps() {
   // console.log(posttimes2);
 
   //配列の書き換え
-  posts.map((post, index) => {
+  a2.map((post, index) => {
     post.node.time = posttimes2[index];
   });
-  //いらない？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-
-  // //配列postsにidというkeyを新しく追加する "AM 8"とか
-  // //新しく追加する時はforEachを使うっぽい
-  // posts.forEach((e) => {
-  //   e.idx = e.node.time.substr(0, 5);
-  // });
 
   return {
-    props: { posts },
+    props: { a2 },
   };
 }
+
+
+//postsをa2に変換（現在時刻によって並び替える！（オブジェクトの並び替えslice）
