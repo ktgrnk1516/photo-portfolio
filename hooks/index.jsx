@@ -1,7 +1,7 @@
 // カスタムフック（useRef）
 //https://lab.syncer.jp/Web/JavaScript/Snippet/10/
 
-import { useCallback, useEffect,  useRef } from "react";
+import React , { useCallback, useEffect,  useRef } from "react";
 
 export const useScroll = (state, setIsVisible) => {
   const ref = useRef(null);
@@ -63,15 +63,17 @@ export const useScroll = (state, setIsVisible) => {
       const d_element = c_element.slice(0, -9);
 
       // 時間によって処理を分ける=>処理じっくり考える
-      if (d_element !== "PM 6") {
-        return;
-      }
+      // if (d_element !== "PM 6") {
+      //   return;
+      // }
+
+
       if (d_element === "PM 6") {
         //スクロールで背景色を変える処理
         // console.log(entries[0].target);
 
         const clientRect = entries[0].target.getBoundingClientRect();
-        const px = window.pageYOffset + clientRect.top - 400;
+        const px = window.pageYOffset + clientRect.top - 300;
         //↑該当時間の要素等の最後になるから、2段くらいあげる（-600のとこ）
         // console.log(px);
         const toggleVisibility = () => {
@@ -81,6 +83,28 @@ export const useScroll = (state, setIsVisible) => {
         window.addEventListener("scroll", toggleVisibility);
         return () => window.removeEventListener("scroll", toggleVisibility);
       }
+
+      else if(d_element === "AM 8") {
+        //スクロールで背景色を変える処理
+        // console.log(entries[0].target);
+
+        const clientRect = entries[0].target.getBoundingClientRect();
+        const px = window.pageYOffset + clientRect.top - 300;
+        //↑該当時間の要素等の最後になるから、2段くらいあげる（-600のとこ）
+        // console.log(px);
+        const toggleVisibility = () => {
+          window.scrollY > px ? setIsVisible(false) : setIsVisible(true);
+        };
+
+        window.addEventListener("scroll", toggleVisibility);
+        return () => window.removeEventListener("scroll", toggleVisibility);
+      }
+
+
+
+
+
+
     }
   }, []);
 

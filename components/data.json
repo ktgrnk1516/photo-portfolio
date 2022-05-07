@@ -4,6 +4,7 @@
     "idx": "AM 4",
     "AMPM": "AM",
     "time": "04",
+    "Time": "04",
     "DayNight": "（夜）"
   },
   {
@@ -11,6 +12,7 @@
     "idx": "AM 5",
     "AMPM": "AM",
     "time": "05",
+    "Time": "05",
     "DayNight": "（朝）"
   },
   {
@@ -18,6 +20,7 @@
     "idx": "AM 6",
     "AMPM": "AM",
     "time": "06",
+    "Time": "06",
     "DayNight": "（朝）"
   },
   {
@@ -25,6 +28,7 @@
     "idx": "AM 7",
     "AMPM": "AM",
     "time": "07",
+    "Time": "07",
     "DayNight": "（朝）"
   },
   {
@@ -32,6 +36,7 @@
     "idx": "AM 8",
     "AMPM": "AM",
     "time": "08",
+    "Time": "08",
     "DayNight": "（朝）"
   },
   {
@@ -39,6 +44,7 @@
     "idx": "AM 9",
     "AMPM": "AM",
     "time": "09",
+    "Time": "09",
     "DayNight": "（朝）"
   },
   {
@@ -46,6 +52,7 @@
     "idx": "AM 10",
     "AMPM": "AM",
     "time": "10",
+    "Time": "10",
     "DayNight": "（朝）"
   },
   {
@@ -53,6 +60,7 @@
     "idx": "AM 11",
     "AMPM": "AM",
     "time": "11",
+    "Time": "11",
     "DayNight": "（昼）"
   },
   {
@@ -60,6 +68,7 @@
     "idx": "PM 0",
     "AMPM": "PM",
     "time": "00",
+    "Time": "12",
     "DayNight": "（昼）"
   },
   {
@@ -67,6 +76,7 @@
     "idx": "PM 1",
     "AMPM": "PM",
     "time": "01",
+    "Time": "13",
     "DayNight": "（昼）"
   },
   {
@@ -74,6 +84,7 @@
     "idx": "PM 2",
     "AMPM": "PM",
     "time": "02",
+    "Time": "14",
     "DayNight": "（昼）"
   },
   {
@@ -81,6 +92,7 @@
     "idx": "PM 3",
     "AMPM": "PM",
     "time": "03",
+    "Time": "15",
     "DayNight": "（昼）"
   },
   {
@@ -88,6 +100,7 @@
     "idx": "PM 4",
     "AMPM": "PM",
     "time": "04",
+    "Time": "16",
     "DayNight": "（昼）"
   },
   {
@@ -95,6 +108,7 @@
     "idx": "PM 5",
     "AMPM": "PM",
     "time": "05",
+    "Time": "17",
     "DayNight": "（昼）"
   },
   {
@@ -102,6 +116,7 @@
     "idx": "PM 6",
     "AMPM": "PM",
     "time": "06",
+    "Time": "18",
     "DayNight": "（夜）"
   },
   {
@@ -109,6 +124,7 @@
     "idx": "PM 7",
     "AMPM": "PM",
     "time": "07",
+    "Time": "19",
     "DayNight": "（夜）"
   },
   {
@@ -116,6 +132,7 @@
     "idx": "PM 8",
     "AMPM": "PM",
     "time": "08",
+    "Time": "20",
     "DayNight": "（夜）"
   },
   {
@@ -123,6 +140,7 @@
     "idx": "PM 9",
     "AMPM": "PM",
     "time": "09",
+    "Time": "21",
     "DayNight": "（夜）"
   },
   {
@@ -130,6 +148,7 @@
     "idx": "PM 10",
     "AMPM": "PM",
     "time": "10",
+    "Time": "22",
     "DayNight": "（夜）"
   },
   {
@@ -137,6 +156,7 @@
     "idx": "PM 11",
     "AMPM": "PM",
     "time": "11",
+    "Time": "23",
     "DayNight": "（夜）"
   },
   {
@@ -144,6 +164,7 @@
     "idx": "AM 0",
     "AMPM": "AM",
     "time": "00",
+    "Time": "00",
     "DayNight": "（夜）"
   },
   {
@@ -151,6 +172,7 @@
     "idx": "AM 1",
     "AMPM": "AM",
     "time": "01",
+    "Time": "01",
     "DayNight": "（夜）"
   },
   {
@@ -158,6 +180,7 @@
     "idx": "AM 2",
     "AMPM": "AM",
     "time": "02",
+    "Time": "02",
     "DayNight": "（夜）"
   },
   {
@@ -165,6 +188,7 @@
     "idx": "AM 3",
     "AMPM": "AM",
     "time": "03",
+    "Time": "03",
     "DayNight": "（夜）"
   }
 ]
