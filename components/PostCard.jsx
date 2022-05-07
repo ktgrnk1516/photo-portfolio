@@ -1,11 +1,20 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
-import classes from "./PostCard.module.scss";
+import React, { useMemo } from "react";
+import styles from "./PostCard.module.scss";
+
+//Material-UI モーダル
+import Box from "@mui/material/Box";
+// import Button from "@mui/material/Button";
+// import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+//モダールのトランジション
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
 //カスタムフックのインポート
 import { useScroll } from "../hooks"; //TimeSlider
 
-const PostCard = React.memo(({ post, timeClick, setIsVisible }) => {
+const PostCard = ({ post, timeClick, isVisible, setIsVisible }) => {
   //カスタムhookのuseScroll
   const postCardRef = useScroll(timeClick, setIsVisible);
   //機能①
@@ -18,16 +27,49 @@ const PostCard = React.memo(({ post, timeClick, setIsVisible }) => {
   //背景色のカスタムフック
   //現在画面内に写っているPostCardの要素を取得して、stateに保存し、背景色のカスタムフックに渡す
 
+  // const handleClick = () => {
+  //   console.log("Clicked!");
+  // };
+
+  //モーダル
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
-    <div className={classes.root}>
-      <figure className={classes.hover_parent}>
+    <div className={styles.root}>
+      <figure className={styles.hover_parent} onClick={handleOpen}>
         <img src={post.image.url} alt="" />　
-        <figcaption className={classes.hover_mask}>
+        <figcaption className={styles.hover_mask}>
           <div ref={postCardRef}>{post.time}</div>
         </figcaption>
       </figure>
+      {/* モーダル */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        className={
+          isVisible
+            ? `${styles.black_visible}   ${styles.modal}`
+            : `${styles.white_visible}  ${styles.modal}`
+        }
+        // closeAfterTransition
+        // BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 35000,
+        }}
+      >
+        <Fade in={open} className={styles.box}>
+          <div>
+            <button className={styles.closeButton} onClick={handleClose}>
+              <span>&times;</span>
+            </button>
+            <img src={post.image.url} alt="img" />　
+          </div>
+        </Fade>
+      </Modal>
     </div>
   );
-});
+};
 
 export default PostCard;

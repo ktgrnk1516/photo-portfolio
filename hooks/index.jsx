@@ -1,13 +1,13 @@
 // カスタムフック（useRef）
 //https://lab.syncer.jp/Web/JavaScript/Snippet/10/
 
-import React , { useCallback, useEffect,  useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 export const useScroll = (state, setIsVisible) => {
   const ref = useRef(null);
 
   //機能①TimeSlider
-  useEffect(() => {
+  const bgScroll = useCallback(() => {
     //いま参照している要素を取得
     const element = ref.current;
     const a_element = element.outerHTML.substr(5);
@@ -29,11 +29,17 @@ export const useScroll = (state, setIsVisible) => {
       behavior: "smooth",
       block: "center",
     });
+  }, []);
+
+
+  useEffect(() => {
+    bgScroll();
   }, [state]);
 
 
 
-  
+
+
 
   ////機能②背景色の変更
   const bgGround = useCallback(() => {
@@ -62,11 +68,10 @@ export const useScroll = (state, setIsVisible) => {
       const c_element = entries[0].target.outerHTML.substr(5);
       const d_element = c_element.slice(0, -9);
 
-      // 時間によって処理を分ける=>処理じっくり考える
-      // if (d_element !== "PM 6") {
-      //   return;
-      // }
-
+      //パフォーマンスの向上
+      if (d_element !== "PM 6" && d_element !== "AM 8") {
+        return;
+      }
 
       if (d_element === "PM 6") {
         //スクロールで背景色を変える処理
@@ -82,9 +87,7 @@ export const useScroll = (state, setIsVisible) => {
 
         window.addEventListener("scroll", toggleVisibility);
         return () => window.removeEventListener("scroll", toggleVisibility);
-      }
-
-      else if(d_element === "AM 8") {
+      } else if (d_element === "AM 8") {
         //スクロールで背景色を変える処理
         // console.log(entries[0].target);
 
@@ -99,18 +102,12 @@ export const useScroll = (state, setIsVisible) => {
         window.addEventListener("scroll", toggleVisibility);
         return () => window.removeEventListener("scroll", toggleVisibility);
       }
-
-
-
-
-
-
     }
   }, []);
 
   useEffect(() => {
     bgGround();
-  }, []);
+  }, [setIsVisible]);
 
   return ref;
 };

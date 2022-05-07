@@ -13,6 +13,7 @@
   position: fixed;
   margin-top: -100vh;
   padding-right: 10%;
+  
 
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;

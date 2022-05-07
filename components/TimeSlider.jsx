@@ -1,43 +1,55 @@
-import React from "react";
+import React, { useCallback,useEffect,useState } from "react";
 import Data from "./data.json";
 import styles from "./TimeSlider.module.scss";
 
-const TimeSlider = React.memo(({ handleTimeClick }) => {
-  console.log(Data);
-  const data = Data.map((d) => d.Time);
-  console.log(data);
+const TimeSlider = ({ handleTimeClick }) => {
+
+  const [a2,setA2] = useState([])
+
+
+
 
   //現在の時間を起点に並び替え
-  let time = new Date();
-  let hh = time.getHours().toLocaleString("ja-JP").padStart(2, "0");
-  let mm = time.getMinutes().toLocaleString("ja-JP");
-  let AMPM = hh + ":" + mm;
-  const result3 = AMPM.substr(0, 2);
+  const timeNow = useCallback(() => {
+    const data = Data.map((d) => d.Time);
 
-  // console.log(result3); //15
+    let time = new Date();
+    let hh = time.getHours().toLocaleString("ja-JP").padStart(2, "0");
+    let mm = time.getMinutes().toLocaleString("ja-JP");
+    let AMPM = hh + ":" + mm;
+    const result3 = AMPM.substr(0, 2);
 
-  //現在時刻に一致するindexを調べる
-  // const result1 = result.map((r) => r.node.time.substr(0, 2));
-  // console.log(result1);
+    // console.log(result3); //15
 
-  let ind = data.indexOf(result3);
-  // let ind = data.indexOf(12);
-  // console.log(ind);
+    //現在時刻に一致するindexを調べる
+    // const result1 = result.map((r) => r.node.time.substr(0, 2));
+    // console.log(result1);
 
-  ////ind番目の要素から最後までの要素を取り出す
-  let a2 = Data.slice(ind);
-  // console.log(a2);
+    let ind = data.indexOf(result3);
+    // let ind = data.indexOf(12);
+    // console.log(ind);
 
-  ////最初からind番目-1までの要素を取り出す
-  let a3 = Data.slice(0, ind);
-  // console.log(a3);
+    ////ind番目の要素から最後までの要素を取り出す
+    let a2 = Data.slice(ind);
+    // console.log(a2);
 
-  //★★★★★★★★★★★結合
-  a2.push(...a3);
-  console.log(a2);
+    ////最初からind番目-1までの要素を取り出す
+    let a3 = Data.slice(0, ind);
+    // console.log(a3);
 
-  //現在時刻のものが無い時、a2じゃなくDataを使わないとバグおきそう
+    //★★★★★★★★★★★結合
+    a2.push(...a3);
+    console.log(a2);
+    setA2(a2)
 
+    //現在時刻のものが無い時、a2じゃなくDataを使わないとバグおきそう
+  }, []);
+
+  useEffect(() => {
+    timeNow();
+  }, []);
+
+  
   return (
     <div
       className={styles.root}
@@ -63,6 +75,6 @@ const TimeSlider = React.memo(({ handleTimeClick }) => {
       </ul>
     </div>
   );
-});
+};
 
 export default TimeSlider;
