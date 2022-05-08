@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 // import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 //モダールのトランジション
-import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
 //カスタムフックのインポート
@@ -46,9 +45,9 @@ const PostCard = ({ post, timeClick, isVisible, setIsVisible }) => {
 
   return (
     <div className={styles.root}>
-      <figure className={styles.hover_parent} onClick={handleOpen}>
+      <figure className={styles.hover_parent}>
         <img src={post.image.url} alt="" />　
-        <figcaption className={styles.hover_mask}>
+        <figcaption className={styles.hover_mask} onClick={handleOpen}>
           <div ref={postCardRef}>{post.time}</div>
         </figcaption>
       </figure>
