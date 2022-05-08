@@ -76,7 +76,7 @@
 
 .black_visible {
   background: #000;
-  color: rgba(255, 255, 255, 0.911);
+  color: rgb(255, 255, 255);
 }
 .white_visible {
   background: #fff;
@@ -123,6 +123,7 @@
       // border: 0.5px solid;
       font-size: 70px;
       font-weight: 100;
+      opacity: 0.6;
     }
   }
 

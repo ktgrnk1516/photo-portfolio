@@ -4,7 +4,7 @@ import styles from "./FirstPhoto.module.scss";
 const FirstPhoto = ({ posts }) => {
   //FirstPhotoを現在時刻によって切り替える
   //現在時刻の取得
-  let time = new Date();
+  let time = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
   let hh = time.getHours().toLocaleString("ja-JP");
   let mm = time.getMinutes().toLocaleString("ja-JP");
   let AMPM = hh + ":" + mm;

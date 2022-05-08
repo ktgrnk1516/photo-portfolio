@@ -136,7 +136,7 @@ export async function getStaticProps() {
   //--------------------//--------------------//--------------------//--------------------//--------------------
 
   //現在の時間を起点に並び替え
-  let time = new Date();
+  let time = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
   let hh = time.getHours().toLocaleString("ja-JP").padStart(2, "0");
   let mm = time.getMinutes().toLocaleString("ja-JP");
   let AMPM = hh + ":" + mm;
