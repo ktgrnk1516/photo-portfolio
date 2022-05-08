@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 50vh;
+  height: 45vh;
   /* height: 100%; */
 
   /* これ！ */
@@ -20,7 +20,7 @@
   position: fixed;
   /* margin-top: -115vh; */
   padding-left: 5%;
-
+  margin-top: 8vh;
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;
   transition: all 0.5s ease;
@@ -98,7 +98,7 @@
     height: 100%;
     width: 100%;
 
-    margin-top: -20vh;
+    margin-top: -14vh;
     padding-right: 0%;
   }
 
