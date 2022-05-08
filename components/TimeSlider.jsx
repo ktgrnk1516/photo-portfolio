@@ -39,7 +39,7 @@ const TimeSlider = ({ handleTimeClick }) => {
 
     //★★★★★★★★★★★結合
     a2.push(...a3);
-    console.log(a2);
+    // console.log(a2);
     setA2(a2)
 
     //現在時刻のものが無い時、a2じゃなくDataを使わないとバグおきそう

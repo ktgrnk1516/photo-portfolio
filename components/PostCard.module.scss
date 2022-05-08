@@ -69,7 +69,7 @@
   }
 
   figure.hover_parent:hover img {
-    transition: 0.5s;
+    transition: 0.5s ease;
     transform: scale(1.05);
   }
 }
