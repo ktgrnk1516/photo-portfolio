@@ -82,6 +82,7 @@ const FirstPhoto = ({ posts, count, setCount }) => {
     return (
       <div className={styles.img_root} onClick={handleFirstPhotoClicked}>
         <img src={post.image.url} alt="" className={styles.img} />
+        <div className={styles.post_time}>{post.time}</div>
       </div>
     );
   }, [count]);

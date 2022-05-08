@@ -1,13 +1,9 @@
-import React, { useCallback,useEffect,useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Data from "./data.json";
 import styles from "./TimeSlider.module.scss";
 
-const TimeSlider = ({ handleTimeClick }) => {
-
-  const [a2,setA2] = useState([])
-
-
-
+const TimeSlider = ({ handleTimeClick, count }) => {
+  const [a2, setA2] = useState([]);
 
   //現在の時間を起点に並び替え
   const timeNow = useCallback(() => {
@@ -25,7 +21,7 @@ const TimeSlider = ({ handleTimeClick }) => {
     // const result1 = result.map((r) => r.node.time.substr(0, 2));
     // console.log(result1);
 
-    let ind = data.indexOf(result3);
+    let ind = data.indexOf(result3) + count;
     // let ind = data.indexOf(12);
     // console.log(ind);
 
@@ -40,16 +36,15 @@ const TimeSlider = ({ handleTimeClick }) => {
     //★★★★★★★★★★★結合
     a2.push(...a3);
     // console.log(a2);
-    setA2(a2)
+    setA2(a2);
 
     //現在時刻のものが無い時、a2じゃなくDataを使わないとバグおきそう
-  }, []);
+  }, [count]);
 
   useEffect(() => {
     timeNow();
-  }, []);
+  }, [count]);
 
-  
   return (
     <div
       className={styles.root}

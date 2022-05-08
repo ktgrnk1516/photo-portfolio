@@ -1,19 +1,25 @@
 .body_root {
   margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: first baseline; */
 }
 
 .first_photo {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+
+  height: 50vh;
+  /* height: 100%; */
 
   /* これ！ */
-  width: 100vw;
+  /* width: 100vw; */
+  width: 80%;
 
   position: fixed;
-  margin-top: -100vh;
-  padding-right: 10%;
-  
+  /* margin-top: -115vh; */
+  padding-left: 5%;
 
   /* //下から上に表示させるために最初非表示 */
   opacity: 1;
@@ -38,6 +44,36 @@
   margin-top: 100vh;
 }
 
+@media screen and (max-width: 1200px) {
+  .body_root {
+    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: first baseline; */
+  }
+
+  .first_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 70vh;
+    /* height: 100%; */
+
+    /* これ！ */
+    /* width: 100vw; */
+    width: 90%;
+
+    position: fixed;
+    /* margin-top: -115vh; */
+    padding-right: 0%;
+    padding-left: 0%;
+    /* //下から上に表示させるために最初非表示 */
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+}
+
 @media screen and (max-width: 926px) {
   .body_root {
     margin: 0 10%;
@@ -57,14 +93,21 @@
   .first_photo {
     display: flex;
     justify-content: center;
-    width: 100%;
-    padding-right: 0;
     align-items: center;
-    height: 100vh;
-    margin-top: -120vh;
+
+    height: 100%;
+    width: 100%;
+
+    margin-top: -20vh;
+    padding-right: 0%;
   }
 
   .body_wrapper {
-    margin-top: 100vh;
+    /* margin-top: 100vh; */
+  }
+
+  .show {
+    opacity: 0;
+    transform: none;
   }
 }

@@ -3,7 +3,7 @@ import { Header } from "./";
 import { TimeSlider } from "./";
 import styles from "./Layout.module.scss";
 
-const Layout = ({ isVisible, children, handleTimeClick }) => {
+const Layout = ({ isVisible, children, handleTimeClick, count }) => {
   const [timeSlider, setTimeSlider] = useState(false);
 
   //少しでもスクロールしたらTimeSliderを表示する
@@ -27,7 +27,7 @@ const Layout = ({ isVisible, children, handleTimeClick }) => {
               timeSlider ? `${styles.left}   ${styles.show}` : `${styles.left} `
             }
           >
-            <TimeSlider handleTimeClick={handleTimeClick} />
+            <TimeSlider handleTimeClick={handleTimeClick} count={count} />
           </div>
           <div className={styles.right}>{children}</div>
         </div>

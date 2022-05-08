@@ -7,6 +7,7 @@
   margin: 5% 0;
 
   display: flex;
+  flex-direction: column;
   width: 50%;
   height: 30%;
 
@@ -41,6 +42,27 @@
       text-align: center;
       align-items: center;
     }
+  }
+  .post_time {
+    // position: absolute;
+    // bottom: 8%;
+    // // postion abusoluteで左右中央寄せ
+    // left: 50%;
+    // transform: translateX(-50%);
+    // -webkit-transform: translateX(-50%);
+    // -ms-transform: translateX(-50%);
+    // // postion abusoluteで左右中央寄せ
+
+    margin-top: 5%;
+
+    height: 40px;
+    font-size: 25px;
+    font-weight: 100;
+    font-size: small;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
   }
 }
 

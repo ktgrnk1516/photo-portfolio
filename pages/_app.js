@@ -9,7 +9,8 @@ function MyApp({ Component, pageProps }) {
   //スクロールによって背景色を変える
   const [isVisible, setIsVisible] = useState(false);
 
-  // console.log(isVisible);
+  //firstPhotoをクリックした時の状態
+  const [count, setCount] = useState(0);
 
   //スクロールで背景色を変える処理
   // const toggleVisibility = (state) => {
@@ -33,12 +34,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Layout isVisible={isVisible} handleTimeClick={handleTimeClick}>
+      <Layout
+        isVisible={isVisible}
+        handleTimeClick={handleTimeClick}
+        count={count}
+        setCount={setCount}
+      >
         <Component
           {...pageProps}
           timeClick={timeClick}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          count={count}
+          setCount={setCount}
         />
       </Layout>
     </>
