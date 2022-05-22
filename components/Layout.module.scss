@@ -4,6 +4,9 @@
   background: #000;
   color: #fff;
   transition: 0.5s all ease;
+  input, textarea ,button{
+    background: rgb(10, 10, 10);
+  }
 }
 .white_visible {
   width: 100vw;
