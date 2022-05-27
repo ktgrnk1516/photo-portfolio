@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   const [isVisible, setIsVisible] = useState(false);
 
   //firstPhotoをクリックした時の状態
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   //スクロールで背景色を変える処理
   // const toggleVisibility = (state) => {

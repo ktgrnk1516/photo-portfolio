@@ -86,6 +86,26 @@
 .modal {
   border: 0px none;
   outline: 0px;
+
+  //ふわっと表示//ふわっと表示//ふわっと表示//ふわっと表示
+  opacity: 0;
+  /* アニメーション */
+  animation: button 0.5s linear;
+  animation-fill-mode: both;
+
+  /* ---------------------------- */
+  /* --- Animation --- */
+  /* ---------------------------- */
+  @keyframes button {
+    0% {
+      opacity: 0;
+      transform: scale(0.98, 0.98);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  //ふわっと表示//ふわっと表示//ふわっと表示//ふわっと表示
 }
 
 .box {
@@ -277,7 +297,5 @@
     }
   }
 }
-
-
 
 //:checked
